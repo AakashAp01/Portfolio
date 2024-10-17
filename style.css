@@ -1,216 +1,243 @@
-/* Global Styles */
+:root {
+    /* Default dark theme */
+    --bg-color: #000; /* Background color */
+    --text-color: #fff; /* Text color */
+    --navbar-bg: #00000000; /* Navbar background color */
+    --navbar-text-color: #fff; /* Navbar text color */
+    --footer-bg: #00000000; /* Footer background color */
+    --footer-text-color: #fff; /* Footer text color */
+    --progress-bg: #000000; /* Progress container background color */
+    --progress-bar: linear-gradient(to right, #dc3545, #000000); /* Progress bar background */
+    --image-border-left:linear-gradient(to top, #dc3545, #000);
+    --image-border-bottom:linear-gradient(to right, #dc3545, #000);
+}
+
+.light-theme {
+    /* Light theme variables */
+    --bg-color: #fff; /* Background color */
+    --text-color: #000; /* Text color */
+    --navbar-bg: #ffffff00; /* Navbar background color */
+    --navbar-text-color: #000; /* Navbar text color */
+    --footer-bg: #ffffff00; /* Footer background color */
+    --footer-text-color: #000; /* Footer text color */
+    --progress-bg: #ffffff; /* Progress container background color */
+    --progress-bar: linear-gradient(to right, #dc3545, #ffffff); /* Progress bar background */
+    --image-border-left:linear-gradient(to top, #dc3545, #ffffff);
+    --image-border-bottom:linear-gradient(to right, #dc3545, #ffffff);
+}
 
 body {
-    background-color: #000; /* Black background */
-    color: #fff; /* White text for readability */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.about-section{
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
-.navbar-dark .navbar-nav .nav-link {
-    color: #fff; /* White text for navbar links */
-}
-
-
-footer {
-    background-color: #111; /* Slightly lighter black for footer */
-    color: #fff; /* White text in footer */
-}
-
-/* Navbar custom styles */
 .navbar {
-    background-color: #111; /* Slightly lighter black for contrast */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    padding: 0.75rem 1rem; /* Padding to make it look balanced */
-    transition: background-color 0.5s ease-in-out; /* Smooth background color transition */
+    background-color: var(--navbar-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 0.75rem 1rem;
+    transition: background-color 0.5s ease-in-out;
 }
 
 .navbar-brand {
-    font-family: 'Montserrat', 'Arial', sans-serif; /* Modern sans-serif font with fallback */
-    font-size: 1.6rem; /* Increase font size for better visibility */
-    font-weight: 700; /* Semi-bold for emphasis */
-    letter-spacing: 2px; /* Slightly increase letter spacing for a cleaner look */
-    color: #333; /* Default text color */
-    position: relative; /* For positioning the pseudo-elements */
-    padding: 0.5rem 0; /* Padding for top and bottom */
-    overflow: hidden; /* Prevent overflow of the animated borders */
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--navbar-text-color);
+    position: relative;
+    padding: 0.5rem 0;
+    overflow: hidden;
 }
 
-/* Top Border */
 .navbar-brand::before,
 .navbar-brand::after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
-    height: 2px; /* Height of the border */
+    height: 2px;
     background-color: #dc3545; /* Border color */
-    transition: transform 0.3s ease; /* Animation effect */
+    transition: transform 0.3s ease;
 }
 
-/* Top Border */
 .navbar-brand::before {
-    top: 0; /* Position at the top */
-    transform: scaleX(0); /* Start hidden (scaled down) */
+    top: 0;
+    transform: scaleX(0);
 }
 
-/* Bottom Border */
 .navbar-brand::after {
-    bottom: 0; /* Position at the bottom */
-    transform: scaleX(0); /* Start hidden (scaled down) */
+    bottom: 0;
+    transform: scaleX(0);
 }
 
-/* Show border on hover */
 .navbar-brand:hover::before,
 .navbar-brand:hover::after {
-    transform: scaleX(1); /* Expand to full width on hover */
+    transform: scaleX(1);
 }
 
 .navbar-brand:hover {
     color: #dc3545; /* Change text color on hover */
 }
 
-
-/* Navbar link styles */
 .navbar-nav .nav-link {
-    font-size: 1.1rem; /* Slightly larger font size */
-    transition: color 0.3s ease, transform 0.2s ease; /* Smooth hover transition */
-    padding: 0.75rem 1rem; /* Padding for better clickability */
-    border-radius: 5px; /* Rounded corners for links */
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 0.75rem 1rem;
     position: relative;
-    overflow: hidden; /* Hide background animation effect overflow */
-    color: #fff; /* Ensuring link text is white */
+    overflow: hidden;
+    color: var(--navbar-text-color);
 }
 
-/* Nav link underline animation */
 .navbar-nav .nav-link::before {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0;
-    height: 3px; /* Red underline */
+    height: 3px;
     background-color: #dc3545; /* Red color for underline */
-    transition: width 0.3s ease-in-out; /* Smooth underline animation */
+    transition: width 0.3s ease-in-out;
 }
 
-/* Expand underline on hover */
 .navbar-nav .nav-link:hover::before {
-    width: 100%; /* Full underline width on hover */
+    width: 100%;
 }
 
-/* Active state for current page */
 .navbar-nav .nav-link.active {
     color: #ff0000; /* Red color for active links */
     border-bottom: 3px solid #dc3545; /* Red border for active links */
 }
 
-/* Hover effect for nav links */
 .navbar-nav .nav-link:hover {
-    color: #fff; /* White text on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    color: var(--navbar-text-color);
+    transform: scale(1.05);
 }
 
-/* Footer Styles */
 footer {
-    background-color: #111; /* Slightly lighter black for footer */
-    padding: 2rem 0; /* Padding for the footer area */
-    text-align: center; /* Center align footer text */
+    background-color: var(--footer-bg);
+    color: var(--footer-text-color);
+    padding: 2rem 0;
+    text-align: center;
 }
 
-footer a {
-    color: #ff0000; /* Red footer links */
-    text-decoration: none; /* No underline */
-    transition: color 0.3s ease;
-}
-
-/* Skills Section */
 .skills-section {
     padding: 50px 0;
 }
 
 .progress {
-    height: 15px; /* Adjust the height of the progress bar */
-    /* border-radius: 5px; Rounded corners */
-    background-color: #000000; /* Background color of the progress container */
-    overflow: hidden; /* Ensures the glow doesn't overflow */
+    height: 15px;
+    background-color: var(--progress-bg);
+    overflow: hidden;
 }
 
 .progress-bar {
-    transition: width 1s ease-in-out; /* Smooth width transition */
-    /* border-radius: 5px; Rounded corners for the progress bar */
-    /* box-shadow: 0 0 5px rgba(255, 0, 0, 0.7), 0 0 10px rgba(255, 0, 0, 0.5); Glow effect */
-    position: relative; /* Needed for animated inner glow */
-    animation: progressAnimation 1.5s forwards; /* Animation for progress */
-    background: linear-gradient(to right, #dc3545, #000000); 
+    transition: width 1s ease-in-out;
+    position: relative;
+    animation: progressAnimation 1.5s forwards;
+    background: var(--progress-bar);
 }
-
 
 @keyframes progressAnimation {
     from {
-        width: 0%; /* Start from 0% */
+        width: 0%;
     }
     to {
-        width: attr(aria-valuenow); /* End at the specified width */
+        width: attr(aria-valuenow);
     }
 }
 
-/* Skill item style */
 .skill-item {
-    margin-bottom: 20px; /* Space between skill items */
+    margin-bottom: 20px;
 }
 
 .skill-name {
-    font-weight: bold; /* Bold font for skill names */
-    margin-bottom: 5px; /* Space between skill name and progress bar */
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-
- /* Profile Image Animation */
- .animated-border {
-    position: relative; /* Position relative for pseudo-elements */
-    overflow: hidden; /* Prevent overflow of pseudo-elements */
-    width: 200px; /* Fixed width for the image */
+.animated-border {
+    position: relative;
+    width: 200px;
 }
 
-.animated-border::before, .animated-border::after {
+.animated-border::before,
+.animated-border::after {
     content: '';
     position: absolute;
-    transition: all 0.5s ease; /* Smooth transition for borders */
+    transition: all 0.5s ease;
 }
 
 .animated-border::before {
     left: 0;
     bottom: 0;
-    height: 100%; /* Match image height */
-    width: 5px; /* Left border width */
-    background: linear-gradient(to top, #dc3545, #000); /* Gradient from red to black */
-    animation: border-left 5s infinite alternate; /* Animation for left border */
+    height: 100%;
+    width: 5px;
+    /* background: linear-gradient(to top, #dc3545, #000); */
+    background: var(--image-border-left);
+    animation: border-left 5s infinite alternate;
 }
 
 .animated-border::after {
     left: 0;
-    height: 5px; /* Bottom border height */
-    width: 100%; /* Full width for bottom border */
-    background: linear-gradient(to right, #dc3545, #000); /* Gradient from red to black */
-    bottom: 0; /* Position at the bottom */
-    animation: border-bottom 5s infinite alternate; /* Animation for bottom border */
+    height: 5px;
+    width: 100%;
+    /* background: linear-gradient(to right, #dc3545, #000); */
+    background: var(--image-border-bottom);
+    bottom: 0;
+    animation: border-bottom 5s infinite alternate;
 }
 
-/* Keyframes for Left Border Animation */
 @keyframes border-left {
     0% {
-        height: 0; /* Start with no height */
+        height: 0;
     }
     100% {
-        height: 100%; /* Full height (matches image height) */
+        height: 100%;
     }
 }
 
-/* Keyframes for Bottom Border Animation */
 @keyframes border-bottom {
     0% {
-        width: 0; /* Start with no width */
+        width: 0;
     }
     100% {
-        width: 100%; /* Full width */
+        width: 100%;
     }
+}
+
+.contact-section {
+    padding: 3rem 0;
+}
+
+.form-control {
+    background-color: var(--bg-color);
+    border: 2px solid #dc3545;
+    color: #dc3545 !important;
+    transition: border-color 1s ease, box-shadow 1s ease;
+    margin: 5px 0;
+}
+
+.input-group {
+    margin-top: 2.5rem;
+}
+
+.form-control::placeholder {
+    color: #dc3545;
+    opacity: 1;
+}
+
+.input-group-text {
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border: 2px solid #dc3545;
+    color: #dc3545 !important;
+}
+
+.input-group .form-control:focus {
+    border-color: #dc3545 !important;
+    background-color: var(--bg-color) !important;
 }
