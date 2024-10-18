@@ -30,6 +30,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
+
 .about-section{
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -241,3 +242,79 @@ footer {
     border-color: #dc3545 !important;
     background-color: var(--bg-color) !important;
 }
+
+
+/* -------------------bg animation css ------------------------------------------ */
+/* Floating logos */
+.floating-logos {
+    position: fixed; /* Keep it fixed in view */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Hide overflow to prevent scroll */
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: -1; /* Keeps it behind other content */
+}
+
+.bg-logo {
+    width: 100px; /* Adjust the logo size */
+    opacity: 0; /* Start invisible */
+    position: absolute;
+    animation: float 120s ease-in-out infinite;
+}
+
+/* Animation for floating effect */
+@keyframes float {
+    0% {
+        transform: translate(0, 0); /* Start at original position */
+        opacity: 0; /* Start invisible */
+    }
+    5% {
+        opacity: 0.1; /* Fade in at the start of the animation */
+    }
+    20% {
+        transform: translate(calc(-30vw), -20vh); /* Move to left top */
+    }
+    40% {
+        transform: translate(calc(30vw), 20vh); /* Move to right bottom */
+    }
+    60% {
+        transform: translate(calc(-20vw), -30vh); /* Move to left middle */
+    }
+    80% {
+        transform: translate(calc(20vw), 10vh); /* Move to right middle */
+    }
+    100% {
+        transform: translate(0, 0); /* Return to start */
+        opacity: 0.1; /* Keep it visible */
+    }
+}
+
+/* Positioning the logos at different times */
+.bg-logo:nth-child(1) {
+    top: 30%;
+    left: 50%;
+    animation-delay: 0s;
+}
+.bg-logo:nth-child(2) {
+    top: 50%;
+    left: 10%;
+    animation-delay: 2s; /* Stagger the animation */
+}
+.bg-logo:nth-child(3) {
+    top: 40%;
+    left: 25%;
+    animation-delay: 4s; /* Stagger the animation */
+}
+.bg-logo:nth-child(4) {
+    top: 70%;
+    left: 60%;
+    animation-delay: 6s; /* Stagger the animation */
+}
+.bg-logo:nth-child(5) {
+    top: 30%;
+    left: 80%;
+    animation-delay: 8s; /* Stagger the animation */
+}
+/* -------------------bg animation css finish------------------------------------------ */

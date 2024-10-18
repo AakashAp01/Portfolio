@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Color Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+            font-family: 'Press Start 2P', cursive;
+            color: #333;
+        }
+
+        .main {
+            width: 600px;
+            padding: 20px;
+            border: 4px solid #000;
+            background-color: #fff;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .box {
+            width: 500px;
+            height: 250px;
+            background-color: #3effff;
+            border: 2px solid #000;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        #name2 {
+            font-size: 20px;
+        }
+
+        .button {
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0px 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #555;
+        }
+
+        .radioBtn {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        .radioBtn label {
+            padding: 10px;
+            width: 120px;
+            text-align: center;
+            margin: 5px;
+            border-radius: 8px;
+            background-color: #e0e0e0;
+            cursor: pointer;
+        }
+
+        .radioBtn input[type="radio"] {
+            display: none;
+        }
+
+        .radioBtn input[type="radio"]:checked+label {
+            background-color: #333;
+            color: #fff;
+        }
+
+        h1 {
+            margin: 30px 0;
+            font-size: 24px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h3>Color Clash</h3>
+        <div id="box" class="box">
+            <h1 id="name2">START GAME</h1>
+        </div>
+
+        <div class="button">
+            <button onclick="start()" id="start">START</button>
+            <button onclick="stop()" id="stop" disabled>STOP</button>
+        </div>
+
+        <div class="radioBtn">
+            <input type="radio" name="color" value="red" id="red">
+            <label for="red">RED</label>
+            <input type="radio" name="color" value="yellow" id="yellow">
+            <label for="yellow">YELLOW</label>
+            <input type="radio" name="color" value="green" id="green">
+            <label for="green">GREEN</label>
+            <input type="radio" name="color" value="pink" id="pink">
+            <label for="pink">PINK</label>
+            <input type="radio" name="color" value="black" id="black">
+            <label for="black">BLACK</label>
+            <input type="radio" name="color" value="gray" id="gray">
+            <label for="gray">GRAY</label>
+            <input type="radio" name="color" value="orange" id="orange">
+            <label for="orange">ORANGE</label>
+            <input type="radio" name="color" value="brown" id="brown">
+            <label for="brown">BROWN</label>
+            <input type="radio" name="color" value="blue" id="blue">
+            <label for="blue">BLUE</label>
+        </div>
+
+        <h1 id="result"></h1>
+    </div>
+
+    <script>
+        var interval;
+        var color = ["red", "yellow", "green", "pink", "black", "gray", "orange", "brown", "blue"];
+        var selectedColor = "";
+
+        function start() {
+            result.style.display = "none";
+            name2.style.display = "none";
+            interval = setInterval(changeColor, 200);
+            document.getElementById("stop").disabled = false;
+        }
+
+        function changeColor() {
+            let box = document.getElementById("box");
+            let i = Math.floor(Math.random() * color.length);
+            box.style.backgroundColor = color[i];
+        }
+
+        function stop() {
+            clearInterval(interval);
+            result.style.display = "block";
+
+            let col = document.getElementsByName('color');
+            for (let i = 0; i < col.length; i++) {
+                if (col[i].checked) {
+                    selectedColor = col[i].value;
+                    break;
+                }
+            }
+
+            if (selectedColor) {
+                document.getElementById("stop").disabled = true;
+
+                let boxColor = document.getElementById("box").style.backgroundColor;
+                result = document.getElementById("result");
+
+                if (selectedColor === boxColor) {
+                    result.style.color = "green";
+                    document.getElementById("result").innerText = "You win!!";
+                } else {
+                    result.style.color = "red";
+                    document.getElementById("result").innerText = "You lose!!";
+                }
+            } else {
+                result.style.color = "blue";
+                document.getElementById("result").innerText = "!! Please choose a color !!";
+            }
+        }
+    </script>
+</body>
+
+</html>
