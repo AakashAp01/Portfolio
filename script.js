@@ -23,3 +23,11 @@ $(document).ready(function() {
         }
     });
 });
+
+document.addEventListener("mousemove", function(e) {
+    let body = document.body;
+    let x = e.clientX;
+    let y = e.clientY;
+    
+    body.style.backgroundImage = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 0, 0, 0.2), transparent 100px)`;
+});
